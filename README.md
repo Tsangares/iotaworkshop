@@ -6,7 +6,7 @@ This project contains the logic involved with creaing a vending equipment serivc
 
 # Dependencies
 
-For each tool I used, I created its own repo, cli and pypi package for portablity. The following project uses these packages that I built, each of which holds a general purpose beyond this project.
+All of the code I used in this project I encapulsated into a easy to use pip package. Many of them have command line interfaces to use the tool and they can all be imported as a module to have enable advanced usage. The following project uses these packages that I built, each of which holds a general purpose beyond this project.
 
  - [iotaescrow](https://github.com/Tsangares/iotaescrow): A escrow implementation using IOTA.
  - [servo_lock](https://github.com/Tsangares/servo_lock): A general purpose, high level servo controller.
