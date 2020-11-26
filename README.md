@@ -1,8 +1,15 @@
 ![IOTA Workshop](https://i.ibb.co/q79SgmW/IOTA-WORKSHOP-BLACK.png)
 
 # Statement of Purpose
+Previous IOTA applications have shown transfer of digital goods, and electricity. This is the first project to have IOTA step into the material world by enabling people to use physical tools using IOTA. The details of this project offer the details on how to safely rent valuable and useful equipment to anyone through the use of a vending equipment chassis. 
 
+The demand for rental equipment exists, [through an analysis I did on HomeDepot](https://docs.google.com/document/d/1urIHW2seTBf1eWDFGsHMb8kDok1n1w5KCycBOFp-prs/edit?usp=sharing), on a subset of basic handheld rental tools they have a lower bound of 80 million dollars a year. The conclusion from this, is a non-profit potentially operated by a DAO, could enter the market by offering tools as a service.
 
+In most converations on automation, it brings up hard feelings of lost jobs. In this instance, to operate a business that offers tools and equipment, which are the instuments of labor, at the lowest cost possible by implementing automation, would enable new jobs through their own employment as entrepenurs. The cost and  availablity of specialized tools of manufacturing is the barrier to entry for new firms in a market. IOTA Workshop is the proof that this technology can offer the neccesities for anyone to start producing goods without having their wage cut by the employer and the owner of the capital.
+
+Peter Kropotin, in *The Conquest of Bread*, vivdly depicts the destitute lives of workers born into a stratum unable to own their instruments of labour, "The shafts of the mine still bear on their rocky walls the marks made by the pick of workman who toled to excavate them. The space between each prop in the underground galleries might be marked as a miner's grave; and who can tell what each of these graves has cost, in tears, in privitations, in unspeakable wretchedness to the family who depenen on the scanty wage of the worker cut off in his prime by fire-damp, rock-fall, or flood?"
+
+To learn more about the ideolgy about behind the IOTA Workshop, I urge you to take a look at the [white paper](https://gist.github.com/Tsangares/6a6521ae66a4a4c75f5c55a15242ce13#file-iota_workshop-md).
 
 # Installation
 
