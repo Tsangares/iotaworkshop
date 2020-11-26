@@ -1,6 +1,6 @@
 # NOTICE
 
-The contents of this directory is the compilation of the pip packages I built to make this project. The pupose of putting them here is to make it easier to view them for the hackathon arbiters.
+The contents of this directory is the compilation of the pip packages that were built to make this project. The pupose of putting them here is to make it easier to view them for the hackathon arbiters.
 
 The following files have their own repositories with their own pypi package and documentation:
 
