@@ -11,6 +11,12 @@ Peter Kropotin, in *The Conquest of Bread*, vivdly depicts the destitute lives o
 
 To learn more about the ideolgy about behind the IOTA Workshop, I urge you to take a look at the [white paper](https://gist.github.com/Tsangares/6a6521ae66a4a4c75f5c55a15242ce13#file-iota_workshop-md).
 
+# Content
+
+Please view the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) to see a list of the components and how to compile them together to replicate the IOTA Workshop proof of concept. 
+
+The following is a abstract on how this proof of concept operates. This project contains the logic involved with creaing a vending equipment serivce; fully autonomous and operated using the IOTA ledger. An e-paper display interfaces with the user to guiding them through depositing IOTA into an escrow account. This operates a servo that is pick proof to unlock a box that gives access to an tool which is the instrument of producion. When the user retuns the tool, an RFID sensor will detect and confirm the tool has been returned and will finish the escrow by returning the deposit on the tool. The servo then proceeds to lock the box, disabling people from trying to steal the tool inside. 
+
 # Installation
 
 First please check with the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) on the parts you need and the how to wire the device, then you can proceed on installing the software.
@@ -28,12 +34,6 @@ If you are using ubuntu orrasbian you can use,
 
     pip install RPi.GPIO
 
-
-# Contents
-
-Please view the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) to see a list of the components and how to compile them together to replicate the IOTA Workshop proof of concept. 
-
-The following is a abstract on how the program runs. This project contains is the logic involved with creaing a vending equipment serivce. Fully autonomous and operated using the IOTA ledger. An e-paper display interfaces with the user to guiding them through depositing IOTA into an escrow account. This operates a servo that is pick proof to unlock a box that gives access to an tool which is the instrument of producion. When the user retuns the tool, an RFID sensor will detect and confirm the tool has been returned and will finish the escrow by returning the deposit on the tool. The servo then proceeds to lock the box, disabling people from trying to steal the tool inside. 
 
 # Dependencies
 
