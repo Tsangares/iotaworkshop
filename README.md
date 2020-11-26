@@ -28,7 +28,7 @@ The following is a abstract on how the program runs. This project contains is th
 
 # Dependencies
 
-All of the code I used in this project I encapulsated into a easy to use pip package. Many of them have command line interfaces to use the tool and they can all be imported as a module to have enable advanced usage. The following project uses these packages that I built, each of which holds a general purpose beyond this project.
+All of the code used in this project is encapulsated into a easy to use pip package. Many of them have command line interfaces to use the tool and they can all be imported as a module to have enable advanced usage. The following project uses these packages that I built, each of which holds a general purpose beyond this project.
 
  - <a href="https://github.com/Tsangares/iotaescrow" target="_blank">iotaescrow</a>: A escrow implementation using IOTA.
  - <a href="https://github.com/Tsangares/servo_lock" target="_blank">servo_lock</a>: A general purpose, high level servo controller.
