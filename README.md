@@ -8,8 +8,8 @@ This project contains the logic involved with creaing a vending equipment serivc
 
 All of the code I used in this project I encapulsated into a easy to use pip package. Many of them have command line interfaces to use the tool and they can all be imported as a module to have enable advanced usage. The following project uses these packages that I built, each of which holds a general purpose beyond this project.
 
- - [iotaescrow](https://github.com/Tsangares/iotaescrow): A escrow implementation using IOTA.
- - [servo_lock](https://github.com/Tsangares/servo_lock): A general purpose, high level servo controller.
- - [pibeep](https://github.com/Tsangares/pibeep): A buzzer utility that offers a variety of sounds and enables tools to make any sound possible using buzzers.
- - [piepd](https://github.com/Tsangares/piepd): A e-paper controller that displays text or QR codes using any of the waveshare screens.
- - [rc522](https://github.com/Tsangares/rc522): An RFID sensor utility used to confirm and verify RFID tags for the rc522 sensor.
+ - [iotaescrow](https://github.com/Tsangares/iotaescrow){:target="_blank"}: A escrow implementation using IOTA.
+ - [servo_lock](https://github.com/Tsangares/servo_lock){:target="_blank"}: A general purpose, high level servo controller.
+ - [pibeep](https://github.com/Tsangares/pibeep){:target="_blank"}: A buzzer utility that offers a variety of sounds and enables tools to make any sound possible using buzzers.
+ - [piepd](https://github.com/Tsangares/piepd){:target="_blank"}: A e-paper controller that displays text or QR codes using any of the waveshare screens.
+ - [rc522](https://github.com/Tsangares/rc522){:target="_blank"}: An RFID sensor utility used to confirm and verify RFID tags for the rc522 sensor.
