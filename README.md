@@ -2,6 +2,8 @@
 
 # Statement of Purpose
 
+
+
 # Installation
 
 First please check with the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) on the parts you need and the how to wire the device, then you can proceed on installing the software.
