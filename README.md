@@ -36,3 +36,8 @@ All of the code used in this project is encapulsated into a easy to use pip pack
  - <a href="https://github.com/Tsangares/piepd" target="_blank">piepd</a>: A e-paper controller that displays text or QR codes using any of the waveshare screens.
  - <a href="https://github.com/Tsangares/rc522" target="_blank">rc522</a>: An RFID sensor utility used to confirm and verify RFID tags for the rc522 sensor.
 
+# Images of POC
+![Front](https://i.imgur.com/urNxrml.jpg)
+![Back](https://i.imgur.com/hEpKakq.jpg)
+![Inside](https://i.imgur.com/opdZAft.jpg)
+![Close Up](https://i.imgur.com/i3mrwzj.jpg)
