@@ -2,6 +2,24 @@
 
 # Statement of Purpose
 
+# Installation
+
+First please check with the wiki on the parts you need and the how to wire the device, then you can proceed on installing the software.
+
+
+To run this program you need to clone the repo or pull the `iotaworkshop.py` file, then install the dependencies,
+
+    pip install iotaescrow servo_lock pibeep piepd rc522
+    
+You will also need `RPi.GPIO`, which because I was running an arch arm operation system I installed it using the arch aur repo using,
+
+    yay -S python-raspberry-gpio
+	
+If you are using ubuntu orrasbian you can use,
+
+    pip install RPi.GPIO
+
+
 # Contents
 
 Please view the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) to see a list of the components and how to compile them together to replicate the IOTA Workshop proof of concept. 
