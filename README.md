@@ -1,3 +1,5 @@
+![IOTA Workshop](https://i.ibb.co/q79SgmW/IOTA-WORKSHOP-BLACK.png)
+
 # Statement of Purpose
 
 # Contents
