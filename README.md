@@ -4,7 +4,7 @@
 
 # Installation
 
-First please check with the wiki on the parts you need and the how to wire the device, then you can proceed on installing the software.
+First please check with the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) on the parts you need and the how to wire the device, then you can proceed on installing the software.
 
 
 To run this program you need to clone the repo or pull the `iotaworkshop.py` file, then install the dependencies,
