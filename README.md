@@ -10,9 +10,9 @@ The demand for rental equipment exists, [through an analysis I did on HomeDepot]
 
 In most converations on automation, it brings up hard feelings of lost jobs. In this instance, to operate a business that offers tools and equipment, which are the instuments of labor, at the lowest cost possible by the implementation of automation, would enable new jobs through their own employment as entrepenurs. The cost and  availablity of specialized tools of manufacturing is the barrier to entry for new firms in a market. IOTA Workshop is the proof that this technology can offer the neccesities for anyone to start producing goods without having their wage cut by the employer and the owner of the capital.
 
-Peter Kropotin, in *The Conquest of Bread*, vivdly depicts the destitute lives of workers born into a stratum unable to own their instruments of labour, "The shafts of the mine still bear on their rocky walls the marks made by the pick of workman who toled to excavate them. The space between each prop in the underground galleries might be marked as a miner's grave; and who can tell what each of these graves has cost, in tears, in privitations, in unspeakable wretchedness to the family who depenen on the scanty wage of the worker cut off in his prime by fire-damp, rock-fall, or flood?"
+Peter Kropotin, in *The Conquest of Bread*, vivdly depicts the destitute lives of workers born into a stratum unable to own their instruments of labour, "The shafts of the mine still bear on their rocky walls the marks made by the pick of workman who toiled to excavate them. The space between each prop in the underground galleries might be marked as a miner's grave; and who can tell what each of these graves has cost, in tears, in privitations, in unspeakable wretchedness to the family who depenen on the scanty wage of the worker cut off in his prime by fire-damp, rock-fall, or flood?"
 
-To learn more about the ideolgy about behind the IOTA Workshop, I urge you to take a look at the [white paper](https://gist.github.com/Tsangares/6a6521ae66a4a4c75f5c55a15242ce13#file-iota_workshop-md).
+To learn more about the ideology about behind the IOTA Workshop, I urge you to take a look at the [white paper](https://gist.github.com/Tsangares/6a6521ae66a4a4c75f5c55a15242ce13#file-iota_workshop-md).
 
 # Content
 
