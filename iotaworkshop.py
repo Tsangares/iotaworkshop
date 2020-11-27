@@ -1,8 +1,8 @@
 from iotaescrow import Escrow
-import display
-import beep
-import servo
-import rfid
+import piepd as display
+import pibeep as beep
+import servo_lock as servo
+import rc522 as rfid
 import time,logging
 logging.basicConfig(level=logging.INFO)
 def testServo():
@@ -12,17 +12,20 @@ def testServo():
     servo.unlock(pin)
 
 class IotaWorkshop:
-    def __init__(self,collateral,fee,tool="A tool"):
-        self.escrow = Escrow()
+    def __init__(self,collateral,fee,node='https://nodes.thetangle.org:443',tool="A tool",silent=False):
+        self.escrow = Escrow(node=node)
         self.servoPin=19
         self.beepPin=12
         self.collateral=collateral
         self.fee=fee
         self.tool=tool
-        
+        self.silent=silent
+    def start(self):
+        while True:
+            self.unoccupied()
     def unoccupied(self):
         #Get RFID Tag id
-        self.rfid = rfid.tempDectect()
+        self.rfid = (1,1)
 
         #Make sure box is locked
         logging.info("Locking servo.")
@@ -40,7 +43,7 @@ class IotaWorkshop:
         
         #Wait for a user to interface with device
         refundAddress = self.escrow.getRefundAddress()
-        beep.brr(self.beepPin)
+        if not self.silent: beep.brr(self.beepPin)
         while refundAddress is None:
             time.sleep(3)
             refundAddress = self.escrow.getRefundAddress()
@@ -53,7 +56,7 @@ class IotaWorkshop:
 
     #Prompts the user to deposit collateral funds
     def promptDeposit(self,refundAddress):
-        beep.confirmed(self.beepPin)
+        if not self.silent: beep.confirmed(self.beepPin)
         logging.info(f"Address recieved: {refundAddress}")
         address = self.escrow.holdingAddress
 
@@ -64,17 +67,17 @@ class IotaWorkshop:
         #Wait for funds to arrive in escrow
         if self.escrow.requestDeposit(self.collateral,refundAddress,duration=120):
             #Escrow recieved unlock box for user
-            beep.confirmed(self.beepPin)
+            if not self.silent: beep.confirmed(self.beepPin)
             display.takeItem()
             servo.unlock(self.servoPin)
             time.sleep(5)
 
             #Prompt occupied display
             display.occupied()
-            waitForReturn(self,returnAddress)            
+            self.waitForReturn(refundAddress)            
         else:
             #User gave an invalid input, reset
-            beep.warning(self.beepPin)
+            if not self.silent: beep.warning(self.beepPin)
             logging.warning("User failed to deposit collateral")
             self.unoccupied()
 
@@ -82,14 +85,22 @@ class IotaWorkshop:
     def waitForReturn(self,refundAddress):
         #Give user 10 secconds to remove item from box
         time.sleep(10)
-
+        logging.info("Waiting for user to deposit item.")
         #Wait for user to deposit item back in box.
-        while not tempDectect():
+        while not tempDetect():
             time.sleep(5)
 
         #Item returned
-        self.escrow.finalizedEscrow()
-        
+        logging.info("User deposited item. Refunding deposit.")
+        self.escrow.finalizeEscrow(fee=self.fee)
+
+def tempDetect():
+    return True
 if __name__=="__main__":
-    workshop = IotaWorkshop(69,2)
-    workshop.unoccupied()
+    import argparse
+    parser = argparse.ArgumentParser(description="Iota workshop utiltiy")
+    parser.add_argument('--node',type=str,help="Iota node", default='https://nodes.thetangle.org:443')
+    args = parser.parse_args()
+
+    workshop = IotaWorkshop(collateral=26000,fee=1000,node=args.node)
+    workshop.start()
