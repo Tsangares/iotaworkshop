@@ -1,5 +1,8 @@
 ![IOTA Workshop](https://i.ibb.co/q79SgmW/IOTA-WORKSHOP-BLACK.png)
 
+# Video
+Please watch the video demonstration here: https://youtu.be/LRsAu9jn_a0
+
 # Statement of Purpose
 Previous IOTA applications have shown transfer of digital goods, and electricity. This is the first project to have IOTA step into the material world by enabling people to use physical tools using IOTA. The details of this project offer the details on how to safely rent valuable and useful equipment to anyone through the use of a vending equipment chassis. 
 
@@ -46,4 +49,6 @@ All of the code used in this project is encapulsated into a easy to use pip pack
  - <a href="https://github.com/Tsangares/rc522" target="_blank">rc522</a>: An RFID sensor utility used to confirm and verify RFID tags for the rc522 sensor.
 
 # Images of POC
+Here is a video demonstation of the IOTA Workshop chasis: https://youtu.be/LRsAu9jn_a0
+
 ![The Chassis](https://i.imgur.com/cgAl9GN.jpg)
