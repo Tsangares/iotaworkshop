@@ -4,9 +4,12 @@ from iota.crypto.addresses import AddressGenerator
 import pathlib,logging,argparse,random
 LETTERS="ABCDEFGHIJKLMNOPQRSTUVWXYZ9"
 class Escrow:
-    def __init__(self,node='https://nodes.thetangle.org:443'):
-        #Get Seet
-        self.seed = self.getSeed()
+    def __init__(self,node='https://nodes.thetangle.org:443',seed=None):
+        #Get Seed
+        if seed is None:
+            self.seed = self.getSeed()
+        else:
+            self.seed = seed
 
         #Setup API
         self.api = Iota(node,self.seed)
@@ -23,7 +26,11 @@ class Escrow:
     
     #Creates an escrow holding address
     def createEscrow(self):
-        self.holdingAddress = self.api.get_new_addresses(count=None,checksum=True)['addresses'][0]
+        try:
+            self.holdingAddress = self.api.get_new_addresses(count=None,checksum=True)['addresses'][0]
+        except iota.adapter.BadApiResponse as e:
+            logging.warning("Bad response from server retrying.")
+            return self.createEscrow()
         return self.holdingAddress
 
     #Waits for a transactions with a refund address
@@ -55,6 +62,8 @@ class Escrow:
     def startCli(self,collateral,fee=0,delay=120,deposit=None):
         #Create holding address
         self.createEscrow()
+        self.fee=fee
+        self.collateral=collateral
         #Wait for a deposit address to be entered
         if self.requestDeposit(collateral,deposit,delay):
             while not self.checkCondition():
@@ -66,7 +75,7 @@ class Escrow:
         #For CLI prompt a deposit address
         if deposit is None:
             self.deposit = input("What is the deposit address: ")
-        print(f"You have {duration/60:.1f} min to deposit {collateral} MIOTA to {self.holdingAddress}")
+        print(f"You have {duration/60:.1f} min to deposit {collateral} IOTA to {self.holdingAddress}")
 
         #Wait for escrow to recive collateral funds.
         count = 0
@@ -107,7 +116,11 @@ class Escrow:
         ]
         
         #Send transaction
-        bundle = self.api.send_transfer(transfers=txs)['bundle']
+        try:
+            bundle = self.api.send_transfer(transfers=txs)['bundle']
+        except iota.adapter.BadApiResponse as e:
+            print("Node did not respond. Retrying.")
+            return self.finalizeEscrow(fee,deposit)
         logging.info(bundle.transactions[0].hash)
         logging.info("Sent money back to recipient")
         self.addRevenue(fee)
@@ -118,7 +131,7 @@ class Escrow:
             return response[0]
         except requests.exceptions.ConnectionError as e:
             logging.info("Error contacting server; retrying")
-            return getBalance(self,address)
+            return self.getBalance(self,address)
 
     #Record the amount of revenue recieved
     def addRevenue(self,money,filename='revenue.txt'):
@@ -126,7 +139,7 @@ class Escrow:
             open(filename,'w+').write('0')
         current = int(open(filename).read().strip())
         current+=money
-        open(filename).write(current)
+        open(filename,'w+').write(str(current))
 
     #Get the current amount of revenue
     def getRevenue(self,filename="revenue.txt"):
@@ -155,7 +168,7 @@ class Escrow:
 
 def createEscrow(args):
     escrow = Escrow(node=args.node)
-    escrow.startCli(50,7)
+    escrow.startCli(args.collateral,args.fee)
     
 def main():
     parser = argparse.ArgumentParser(description='Basic escrow using IOTA.')

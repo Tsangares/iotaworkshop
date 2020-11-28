@@ -102,7 +102,8 @@ def unoccupied(args=None,address=None,fee=None):
     epd.drawQR(address,draw=False)
     epd.drawText("Send me a",draw=False)
     epd.drawText(" refund address.",draw=False)
-    epd.drawText("Fee: ",draw=False)
+    epd.drawText("Fee & Collateral ",draw=False)
+    epd.drawText(" on next screen.",draw=False)
     epd.drawText(getUnit(fee),right=True,overlap=True)
     
 def depositPage(args=None,address=None,fee=None,deposit=None,duration=120):

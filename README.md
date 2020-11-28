@@ -20,6 +20,10 @@ Please view the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) to see a 
 
 The following is a abstract on how this proof of concept operates. This project contains the logic involved with creaing a vending equipment serivce; fully autonomous and operated using the IOTA ledger. An e-paper display interfaces with the user to guiding them through depositing IOTA into an escrow account. This operates a servo that is pick proof to unlock a box that gives access to an tool which is the instrument of producion. When the user retuns the tool, an RFID sensor will detect and confirm the tool has been returned and will finish the escrow by returning the deposit on the tool. The servo then proceeds to lock the box, disabling people from trying to steal the tool inside. 
 
+# IOTA Streams
+
+This project uses iota streams to store the state of the chassis in the iota ledger and keep the prices and fees transparent. To view the log of the escrow please visit: https://keepy.gradstudent.me/
+
 # Installation
 
 First please check with the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) on the parts you need and the how to wire the device, then you can proceed on installing the software.
@@ -60,8 +64,12 @@ With these two dependencies installed, when using the `iotaworkshop.py` if you s
 # CLI Examples
 Here are a few examples on how to run the code through cli,
 
-    python iotaworkshop.py 
-  
+	#The following will request 1.01KIOTA as a deposit, take 10 IOTA as a fee for a hammer
+    python iotaworkshop.py --collateral 1010 --fee 10 --name "hammer"
+	
+	#The following will implement iotastreams and store the state of the escrow in the ledger
+	python iotaworkshop.py --collateral 105 --fee 5 --name "lock pick" --keepy http://192.168.1.100:3002
+	
 
 # Images of POC
 Here is a video demonstation of the IOTA Workshop chasis: https://youtu.be/LRsAu9jn_a0
