@@ -59,8 +59,17 @@ This project uses IOTA streams to publish the current state of the ledger. We us
  - [iot2tangle Streams Http Gateway](https://github.com/iot2tangle/Streams-http-gateway): A rust lib that offers IOTA streams through an API.
  - [iot2tangle Keepy](https://github.com/iot2tangle/Keepy): A nodejs api that connects to the streams gateway and stores a copy of the streams in a mysql database.
 
-With these two dependencies installed, when using the `iotaworkshop.py` if you set the `--keepy` argument, the escrow data will be stored in streams.
-
+With these two dependencies installed, when using the `iotaworkshop.py` if you set the `--keepy` argument, the escrow data will be stored in streams. The data we store from the escrow include:
+ - The name of the tool
+ - Refundable collateral cost
+ - Non-refundable fee
+ - Availability of the tool (if the tool is being used)
+ - The verification condition that is required for a refund of collateral
+ - The escrow address
+ - The deposit address
+ - A string that represents the current status of the chassis
+ 
+ 
 # CLI Examples
 Here are a few examples on how to run the code through cli,
 
