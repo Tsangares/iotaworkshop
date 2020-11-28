@@ -22,7 +22,7 @@ The following is a abstract on how this proof of concept operates. This project 
 
 # IOTA Streams
 
-This project uses iota streams to store the state of the chassis in the iota ledger and keep the prices and fees transparent. To view the log of the escrow please visit: https://keepy.gradstudent.me/
+This project uses iota streams to store the state of the chassis in the iota ledger and keep the prices and fees transparent. To view the log of the escrow from this project please visit: https://keepy.gradstudent.me/messages
 
 # Installation
 
