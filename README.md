@@ -24,7 +24,7 @@ The following is a abstract on how this proof of concept operates. This project 
 
 This project uses iota streams to store the state of the chassis in the iota ledger and keep the prices and fees transparent. To view the log of the escrow from this project please visit: https://keepy.gradstudent.me/messages
 
-The current channel for this POC is: `7886b5006fb3251fb6285390c48bf914e2df8656bfa8dceaeabe012408551d810000000000000000:e3848b864d3f9bf3d03876e9`
+The current channel for this POC is: `0538eddf3842a62cc48f58d706245e3b987896de454da36576d81e32af62d90b0000000000000000:da3d2e69622ed8f730f2ddaa`
 
 # Installation
 
