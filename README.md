@@ -16,13 +16,14 @@ To learn more about the ideology about behind the IOTA Workshop, I urge you to t
 
 # Content
 
-Please view the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) to see a list of the components and how to compile them together to replicate the IOTA Workshop proof of concept. 
+Please view the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) to see a list of the components and how to compile them together to replicate the IOTA Workshop proof of concept. To view the website and see the current go to https://iotaworkshop.gradstudent.me.
 
 The following is a abstract on how this proof of concept operates. This project contains the logic involved with creaing a vending equipment serivce; fully autonomous and operated using the IOTA ledger. An e-paper display interfaces with the user to guiding them through depositing IOTA into an escrow account. This operates a servo that is pick proof to unlock a box that gives access to an tool which is the instrument of producion. When the user retuns the tool, an RFID sensor will detect and confirm the tool has been returned and will finish the escrow by returning the deposit on the tool. The servo then proceeds to lock the box, disabling people from trying to steal the tool inside. 
 
 # IOTA Streams
 
-This project uses iota streams to store the state of the chassis in the iota ledger and keep the prices and fees transparent. To view the log of the escrow from this project please visit: https://keepy.gradstudent.me/messages
+This project uses iota streams to store the state of the chassis in the iota ledger and keep the prices and fees transparent. To view the log of the escrow from this project please visit: https://iotaworkshop.gradstudent.me/states
+
 
 The current channel for this POC is: `0538eddf3842a62cc48f58d706245e3b987896de454da36576d81e32af62d90b0000000000000000:da3d2e69622ed8f730f2ddaa`
 
