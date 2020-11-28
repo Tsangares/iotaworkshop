@@ -1,4 +1,3 @@
-
 from iotaescrow import Escrow
 import piepd as display
 import pibeep as beep

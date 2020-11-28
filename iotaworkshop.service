@@ -1,0 +1,16 @@
+[Unit]
+Description=Iota Workshop service
+
+[Service]
+WorkingDirectory=/opt/iotaworkshop/
+ExecStart=/usr/bin/python iotaworkshop.py \
+			  --node http://192.168.1.6:14265 \
+			  --keepy http://192.168.1.6:14265 \
+			  --name "Lock Pick Set" \
+			  --collateral 1111 \
+			  --fee 11
+RestartSec=30s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
