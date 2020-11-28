@@ -48,6 +48,21 @@ All of the code used in this project is encapulsated into a easy to use pip pack
  - <a href="https://github.com/Tsangares/piepd" target="_blank">piepd</a>: A e-paper controller that displays text or QR codes using any of the waveshare screens.
  - <a href="https://github.com/Tsangares/rc522" target="_blank">rc522</a>: An RFID sensor utility used to confirm and verify RFID tags for the rc522 sensor.
 
+# Optional Dependencies
+
+This project uses IOTA streams to publish the current state of the ledger. We used,
+
+ - [iot2tangle Streams Http Gateway](https://github.com/iot2tangle/Streams-http-gateway): A rust lib that offers IOTA streams through an API.
+ - [iot2tangle Keepy](https://github.com/iot2tangle/Keepy): A nodejs api that connects to the streams gateway and stores a copy of the streams in a mysql database.
+
+With these two dependencies installed, when using the `iotaworkshop.py` if you set the `--keepy` argument, the escrow data will be stored in streams.
+
+# CLI Examples
+Here are a few examples on how to run the code through cli,
+
+    python iotaworkshop.py 
+  
+
 # Images of POC
 Here is a video demonstation of the IOTA Workshop chasis: https://youtu.be/LRsAu9jn_a0
 

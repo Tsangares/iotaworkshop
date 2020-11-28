@@ -1,10 +1,11 @@
+
 from iotaescrow import Escrow
 import piepd as display
 import pibeep as beep
 import servo_lock as servo
 import rc522 as rfid
 import time,logging
-import .gatewate
+import gateway
 
 logging.basicConfig(level=logging.INFO)
 def testServo():
@@ -14,8 +15,8 @@ def testServo():
     servo.unlock(pin)
 
 class IotaWorkshop:
-    def __init__(self,collateral,fee,node='https://nodes.thetangle.org:443',tool="A tool",silent=False):
-        self.escrow = Escrow(node=node,keepyNode=None)
+    def __init__(self,collateral,fee,tool="A tool",node='https://nodes.thetangle.org:443',keepyNode=None,silent=False):
+        self.escrow = Escrow(node=node)
         self.servoPin=19
         self.beepPin=12
         self.collateral=collateral
@@ -26,28 +27,32 @@ class IotaWorkshop:
         self.available = True
         self.keepyNode=keepyNode
         self.deposit = None
+        self.holdingAddress = None
         
     def start(self):
         while True:
             self.unoccupied()
+            self.deposit=None
+            self.holdingAddress=None
             
-    def submitState(self):
-        if keepyNode is None: return
+    def submitState(self,state=None):
+        if self.keepyNode is None: return
         gateway.submitEscrowState(
             self.keepyNode,
             self.collateral,
             self.fee,
             self.tool,
             "rfid",
-            self.holdingAddress,
-            self.deposit,
+            str(self.holdingAddress),
+            str(self.deposit),
             self.available,
+            state,
         )
         
     def unoccupied(self):
         #Get RFID Tag id
         self.rfid = (1,1)
-
+        self.submitState('Initializing')
         #Make sure box is locked
         logging.info("Locking servo.")
         servo.lock(self.servoPin)
@@ -65,7 +70,7 @@ class IotaWorkshop:
         logging.info("Waiting for user to send refund address.")
 
         #Submit state to ledger
-        self.submitState()
+        self.submitState('Waiting for user')
         
         #Wait for a user to interface with device
         refundAddress = self.escrow.getRefundAddress()
@@ -78,7 +83,7 @@ class IotaWorkshop:
         self.deposit = refundAddress
 
         #Submit new state to ledger
-        self.submitState()
+        self.submitState('Deposit recieved, opening chassis.')
         
         #Prompt user to deposit funds
         self.promptDeposit()
@@ -115,7 +120,7 @@ class IotaWorkshop:
     def waitForReturn(self,refundAddress):
         #Submit state
         self.available = False
-        self.submitState()
+        self.submitState('Tool in use.')
         
         #Give user 10 secconds to remove item from box
         time.sleep(10)
@@ -136,8 +141,11 @@ if __name__=="__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Iota workshop utiltiy")
     parser.add_argument('--node',type=str,help="Iota node", default='https://nodes.thetangle.org:443')
-    parser.add_argument('--keepy',type=str,help="Iota node", default='https://keepy.gradstudent.me/messages')
+    parser.add_argument('--keepy',type=str,help="Keepy node for streams", default='http://192.168.1.6:3002')
+    parser.add_argument('--name',type=str,help="Name of the tool.", default='A tool')
+    parser.add_argument('--collateral',type=int,help="The amount of collateral", default=87)
+    parser.add_argument('--fee',type=int,help="The fee for using the tool.", default=7)
     args = parser.parse_args()
 
-    workshop = IotaWorkshop(collateral=26000,fee=1000,node=args.node,keepyNode=args.keepy)
+    workshop = IotaWorkshop(collateral=args.collateral,fee=args.fee,node=args.node,keepyNode=args.keepy,tool=args.name)
     workshop.start()
