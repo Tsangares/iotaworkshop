@@ -2,7 +2,7 @@
 #Change this to your display
 from .waveshare_epd import epd1in54_V2
 from PIL import Image,ImageDraw,ImageFont
-import logging,time,qrcode
+import logging,time,qrcode,math
 from .fonts import nova
 logging.basicConfig(level=logging.INFO)
 class EPD:
@@ -71,7 +71,26 @@ class EPD:
     def close(self):
         epd1in54_V2.epdconfig.module_exit()
 
-
+def getUnit(number):
+    if number < 10**3:
+        return f'{number}\u03B9'
+    elif number < 10**6:
+        number = math.ceil(number/10**3)
+        return f'{number}K\u03B9'
+    elif number < 10**9:
+        number = math.ceil(number/10**6)
+        return f'{number}M\u03B9'
+    elif number < 10**12:
+        number = math.ceil(number/10**9)
+        return f'{number}G\u03B9'
+    elif number < 10**15:
+        number = math.ceil(number/10**12)
+        return f'{number}T\u03B9'
+    elif number < 10**18:
+        number = math.ceil(number/10**15)
+        return f'{number}P\u03B9'
+    else:
+        raise Exception("Too much money")
 def unoccupied(args=None,address=None,fee=None):
     if args is not None:
         address = args.address
@@ -84,7 +103,7 @@ def unoccupied(args=None,address=None,fee=None):
     epd.drawText("Send me a",draw=False)
     epd.drawText(" refund address.",draw=False)
     epd.drawText("Fee: ",draw=False)
-    epd.drawText(f"{fee} M\u03B9",right=True,overlap=True)
+    epd.drawText(getUnit(fee),right=True,overlap=True)
     
 def depositPage(args=None,address=None,fee=None,deposit=None,duration=120):
     if args is not None:
@@ -98,9 +117,9 @@ def depositPage(args=None,address=None,fee=None,deposit=None,duration=120):
     epd.setFontSize(24)
     epd.drawQR(address,draw=False)
     epd.drawText("Deposit:",draw=False)
-    epd.drawText(f"{deposit} M\u03B9",draw=False,overlap=True,right=True)
+    epd.drawText(getUnit(deposit),draw=False,overlap=True,right=True)
     epd.drawText("Fee: ",draw=False)
-    epd.drawText(f"{fee} M\u03B9",right=True,overlap=True,draw=False)
+    epd.drawText(getUnit(fee),right=True,overlap=True,draw=False)
     epd.drawText("Timeout: ",draw=False)
     epd.drawText(f"{duration/60:.0f}min",right=True,overlap=True)
     

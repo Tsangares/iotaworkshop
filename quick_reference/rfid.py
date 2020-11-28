@@ -27,3 +27,9 @@ def detect(rst=31,irq=29):
 def dectectKey(uid,block,rst=31,irq=29):
   _uid,_block = dectect(rst,irq)
   return _uid == uid and _block == block
+
+def tempGet(rst=None,irq=None):
+  return 1, 1
+
+def tempDetect(uid,block):
+  return True

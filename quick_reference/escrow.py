@@ -1,7 +1,7 @@
 import time,json,os,subprocess,requests
 from iota import Iota, ProposedTransaction, Address, TryteString, Fragment, Transaction,adapter,ProposedBundle
 from iota.crypto.addresses import AddressGenerator
-import pathlib,logging,argparse
+import pathlib,logging,argparse,random
 LETTERS="ABCDEFGHIJKLMNOPQRSTUVWXYZ9"
 class Escrow:
     def __init__(self,node='https://nodes.thetangle.org:443'):
@@ -42,7 +42,8 @@ class Escrow:
                 for tx in txs:
                     msg = tx.signature_message_fragment.decode()
                     try:
-                        return Address(msg.strip())
+                        self.deposit = Address(msg.strip())
+                        return self.deposit
                     except: pass
                 logging.warning("Invalid address recieved")
         except requests.exceptions.ConnectionError as e:
@@ -84,20 +85,22 @@ class Escrow:
         return True
 
     #Refund user their collateral, remoing the fee
-    def finalizeEscrow(self):
+    def finalizeEscrow(self,fee=None,deposit=None):
+        if fee is None: fee=self.fee
+        if deposit is None: deposit = self.deposit
         #Return money to deposit address
         returnAmount=self.getBalance(self.holdingAddress)
         
         #Calcualte return amount
         if returnAmount > 0:
-            returnAmount -= self.fee
+            returnAmount -= fee
 
         #Setup transaction
         message="Repayment of collateral"
         feeLocation = self.api.get_new_addresses(count=1,checksum=True)['addresses'][0]
         txs = [
             ProposedTransaction(
-                address = Address(self.deposit),
+                address = Address(deposit),
                 value = returnAmount,
                 message = TryteString.from_unicode(message)
             ),
@@ -133,6 +136,7 @@ class Escrow:
     #Send revenue to an address
     def sendRevenue(self,outputAddress):
         revenue = self.getRevenue()
+        logger.info(f"Currently have {revenue} revenue.")
         message="Output fees from escrow."
         txs = [
             ProposedTransaction(
@@ -141,7 +145,12 @@ class Escrow:
                 message = TryteString.from_unicode(message)
             ),
         ]
-        bundle = self.api.send_transfer(transfers=txs)['bundle']
+        try:
+            logger.info("Sending transfer to node.")        
+            bundle = self.api.send_transfer(transfers=txs)['bundle']
+        except iota.adapter.BadApiResponse as e:
+            print("Bad api resonse retrying")
+            return self.sendRevenue(outputAddress)
         print(bundle.transactions[0].hash)
 
 def createEscrow(args):
