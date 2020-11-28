@@ -24,6 +24,8 @@ The following is a abstract on how this proof of concept operates. This project 
 
 This project uses iota streams to store the state of the chassis in the iota ledger and keep the prices and fees transparent. To view the log of the escrow from this project please visit: https://keepy.gradstudent.me/messages
 
+The current channel for this POC is: `7886b5006fb3251fb6285390c48bf914e2df8656bfa8dceaeabe012408551d810000000000000000:e3848b864d3f9bf3d03876e9`
+
 # Installation
 
 First please check with the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) on the parts you need and the how to wire the device, then you can proceed on installing the software.
@@ -60,15 +62,14 @@ This project uses IOTA streams to publish the current state of the ledger. We us
  - [iot2tangle Keepy](https://github.com/iot2tangle/Keepy): A nodejs api that connects to the streams gateway and stores a copy of the streams in a mysql database.
 
 With these two dependencies installed, when using the `iotaworkshop.py` if you set the `--keepy` argument, the escrow data will be stored in streams. The data we store from the escrow include:
- - The name of the tool
- - Refundable collateral cost
- - Non-refundable fee
- - Availability of the tool (if the tool is being used)
- - The verification condition that is required for a refund of collateral
- - The escrow address
- - The deposit address
- - A string that represents the current status of the chassis
- 
+ - `tool`: The name of the tool
+ - `collateral`: The refundable collateral cost
+ - `fee`: The non-refundable fee
+ - `available`: Availability of the tool (if the tool is being used)
+ - `verification`: The verification condition that is required for a refund of collateral
+ - `esrow_address`: The escrow address
+ - `deposit_address`: The deposit address
+ - `status`: A string that represents the current status of the chassis
  
 # CLI Examples
 Here are a few examples on how to run the code through cli,
