@@ -20,6 +20,12 @@ Please view the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) to see a 
 
 The following is a abstract on how this proof of concept operates. This project contains the logic involved with creaing a vending equipment serivce; fully autonomous and operated using the IOTA ledger. An e-paper display interfaces with the user to guiding them through depositing IOTA into an escrow account. This operates a servo that is pick proof to unlock a box that gives access to an tool which is the instrument of producion. When the user retuns the tool, an RFID sensor will detect and confirm the tool has been returned and will finish the escrow by returning the deposit on the tool. The servo then proceeds to lock the box, disabling people from trying to steal the tool inside. 
 
+# IOTA Streams
+
+This project uses iota streams to store the state of the chassis in the iota ledger and keep the prices and fees transparent. To view the log of the escrow from this project please visit: https://keepy.gradstudent.me/messages
+
+The current channel for this POC is: `7886b5006fb3251fb6285390c48bf914e2df8656bfa8dceaeabe012408551d810000000000000000:e3848b864d3f9bf3d03876e9`
+
 # Installation
 
 First please check with the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) on the parts you need and the how to wire the device, then you can proceed on installing the software.
@@ -55,13 +61,25 @@ This project uses IOTA streams to publish the current state of the ledger. We us
  - [iot2tangle Streams Http Gateway](https://github.com/iot2tangle/Streams-http-gateway): A rust lib that offers IOTA streams through an API.
  - [iot2tangle Keepy](https://github.com/iot2tangle/Keepy): A nodejs api that connects to the streams gateway and stores a copy of the streams in a mysql database.
 
-With these two dependencies installed, when using the `iotaworkshop.py` if you set the `--keepy` argument, the escrow data will be stored in streams.
-
+With these two dependencies installed, when using the `iotaworkshop.py` if you set the `--keepy` argument, the escrow data will be stored in streams. The data we store from the escrow include:
+ - `tool`: The name of the tool
+ - `collateral`: The refundable collateral cost
+ - `fee`: The non-refundable fee
+ - `available`: Availability of the tool (if the tool is being used)
+ - `verification`: The verification condition that is required for a refund of collateral
+ - `esrow_address`: The escrow address
+ - `deposit_address`: The deposit address
+ - `status`: A string that represents the current status of the chassis
+ 
 # CLI Examples
 Here are a few examples on how to run the code through cli,
 
-    python iotaworkshop.py 
-  
+	#The following will request 1.01KIOTA as a deposit, take 10 IOTA as a fee for a hammer
+    python iotaworkshop.py --collateral 1010 --fee 10 --name "hammer"
+	
+	#The following will implement iotastreams and store the state of the escrow in the ledger
+	python iotaworkshop.py --collateral 105 --fee 5 --name "lock pick" --keepy http://192.168.1.100:3002
+	
 
 # Images of POC
 Here is a video demonstation of the IOTA Workshop chasis: https://youtu.be/LRsAu9jn_a0
