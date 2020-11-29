@@ -46,7 +46,13 @@ The data we store from the escrow using streams include:
  - `deposit_address`: The deposit address
  - `status`: A string that represents the current status of the chassis
 
-To view more deails about how we use and implement the streams please take a look at the wiki:
+For this POC you can view all the streams states at our website:
+
+https://iotaworkshop.gradstudent.me/states
+
+
+To view more deails about how we use and implement the streams please take a look at the wiki page on IOTA Streams:
+
 https://github.com/Tsangares/iotaworkshop/wiki/Iota-Streams
 
 # Installation
