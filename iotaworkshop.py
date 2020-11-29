@@ -1,3 +1,4 @@
+
 from iotaescrow import Escrow
 import piepd as display
 import pibeep as beep
@@ -69,7 +70,7 @@ class IotaWorkshop:
         logging.info("Waiting for user to send refund address.")
 
         #Submit state to ledger
-        self.submitState('Waiting for user')
+        self.submitState('Waiting for user to send refund address')
         
         #Wait for a user to interface with device
         refundAddress = self.escrow.getRefundAddress()
@@ -82,7 +83,7 @@ class IotaWorkshop:
         self.deposit = refundAddress
 
         #Submit new state to ledger
-        self.submitState('Deposit recieved, opening chassis.')
+        self.submitState('Refund address recieved. Waiting for deposit.')
         
         #Prompt user to deposit funds
         self.promptDeposit()
@@ -100,6 +101,7 @@ class IotaWorkshop:
 
         #Wait for funds to arrive in escrow
         if self.escrow.requestDeposit(self.collateral,refundAddress,duration=120):
+            self.submitState('Deposit recieved openind chassis.')
             #Escrow recieved unlock box for user
             if not self.silent: beep.confirmed(self.beepPin)
             display.takeItem()
@@ -131,7 +133,9 @@ class IotaWorkshop:
 
         #Item returned
         logging.info("User deposited item. Refunding deposit.")
+        self.available = True
         self.escrow.finalizeEscrow(fee=self.fee)
+                
 
 def tempDetect():
     return True
@@ -145,6 +149,6 @@ if __name__=="__main__":
     parser.add_argument('--collateral',type=int,help="The amount of collateral", default=87)
     parser.add_argument('--fee',type=int,help="The fee for using the tool.", default=7)
     args = parser.parse_args()
-
+    logging.info(args)
     workshop = IotaWorkshop(collateral=args.collateral,fee=args.fee,node=args.node,keepyNode=args.keepy,tool=args.name)
     workshop.start()

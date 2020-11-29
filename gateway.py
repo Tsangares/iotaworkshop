@@ -31,7 +31,9 @@ def submitEscrowState(keepyNode,collateral,fee,tool,condition,escrow,deposit,ava
     endpoint = f'{keepyNode}/messages'
     r = requests.post(endpoint,json=formatted)
     logging.info(f"Submitted data to keepy {r.status_code}: {status}")
+    if r.status_code != 201:
+        logging.warning(r.text)
     
 if __name__=="__main__":
     #Test an escrow submit
-    submitEscrowState('http://192.168.1.6:3002',107,7,'arm','rfid','A'*81,'B'*81,False,'test')
+    submitEscrowState('http://192.168.1.6:3002',107,7,'lockpick','rfid','A'*81,'B'*81,False,'test')
