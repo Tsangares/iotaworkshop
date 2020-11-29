@@ -28,6 +28,9 @@ Please view the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) to see a 
 The following is a abstract on how this proof of concept operates. This project contains the logic involved with creaing a vending equipment serivce; fully autonomous and operated using the IOTA ledger. An e-paper display interfaces with the user to guiding them through depositing IOTA into an escrow account. This operates a servo that is pick proof to unlock a box that gives access to an tool which is the instrument of producion. When the user retuns the tool, an RFID sensor will detect and confirm the tool has been returned and will finish the escrow by returning the deposit on the tool. The servo then proceeds to lock the box, disabling people from trying to steal the tool inside. 
 
 # IOTA Streams
+[View the wiki page for more info on how this project uses streams.](
+https://github.com/Tsangares/iotaworkshop/wiki/Iota-Streams)
+
 
 This project uses iota streams to store the state of the chassis in the iota ledger and keep the prices and fees transparent. To view the log of the escrow from this project please visit: https://iotaworkshop.gradstudent.me/states
 
