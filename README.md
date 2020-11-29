@@ -8,7 +8,7 @@ Please view the wiki to view the verbose instructions on how the project is setu
 
 https://github.com/Tsangares/iotaworkshop/wiki
 
-Contains a list of all my dependcies, the hardware I used and wiring diagrams on how to hook everything up.
+The wiki contains a list of all my dependencies, the hardware I used and wiring diagrams on how to hook everything up.
 
 # Statement of Purpose
 Previous IOTA applications have shown transfer of digital goods, and electricity. This is the first project to have IOTA step into the material world by enabling people to use physical tools using IOTA. The details of this project offer the details on how to safely rent valuable and useful equipment to anyone through the use of a vending equipment chassis. 
