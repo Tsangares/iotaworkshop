@@ -34,6 +34,21 @@ This project uses iota streams to store the state of the chassis in the iota led
 
 The current channel for this POC is: `0538eddf3842a62cc48f58d706245e3b987896de454da36576d81e32af62d90b0000000000000000:da3d2e69622ed8f730f2ddaa`
 
+Streams are used to make the escrow transparent. You can see if someone is using the tool inside the chassis, the tool used and the escrow address in holding. By using streams everything is immutable and available for anyone to audit if the chassis is acting in a non-corrupt fair manner. 
+
+The data we store from the escrow using streams include:
+ - `tool`: The name of the tool
+ - `collateral`: The refundable collateral cost
+ - `fee`: The non-refundable fee
+ - `available`: Availability of the tool (if the tool is being used)
+ - `verification`: The verification condition that is required for a refund of collateral
+ - `esrow_address`: The escrow address
+ - `deposit_address`: The deposit address
+ - `status`: A string that represents the current status of the chassis
+
+To view more deails about how we use and implement the streams please take a look at the wiki:
+https://github.com/Tsangares/iotaworkshop/wiki/Iota-Streams
+
 # Installation
 
 First please check with the [wiki](https://github.com/Tsangares/iotaworkshop/wiki) on the parts you need and the how to wire the device, then you can proceed on installing the software.
@@ -69,15 +84,7 @@ This project uses IOTA streams to publish the current state of the ledger. We us
  - [iot2tangle Streams Http Gateway](https://github.com/iot2tangle/Streams-http-gateway): A rust lib that offers IOTA streams through an API.
  - [iot2tangle Keepy](https://github.com/iot2tangle/Keepy): A nodejs api that connects to the streams gateway and stores a copy of the streams in a mysql database.
 
-With these two dependencies installed, when using the `iotaworkshop.py` if you set the `--keepy` argument, the escrow data will be stored in streams. The data we store from the escrow include:
- - `tool`: The name of the tool
- - `collateral`: The refundable collateral cost
- - `fee`: The non-refundable fee
- - `available`: Availability of the tool (if the tool is being used)
- - `verification`: The verification condition that is required for a refund of collateral
- - `esrow_address`: The escrow address
- - `deposit_address`: The deposit address
- - `status`: A string that represents the current status of the chassis
+With these two dependencies installed, when using the `iotaworkshop.py` if you set the `--keepy` argument, the escrow data will be stored in streams. 
  
 # CLI Examples
 Here are a few examples on how to run the code through cli,
