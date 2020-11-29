@@ -66,7 +66,7 @@ class IotaWorkshop:
         logging.info(f"Holding Address: {address}")
 
         #Set Display to prompt user to give address
-        display.unoccupied(address=str(address),fee=11)
+        display.unoccupied(address=str(address),fee=self.fee)
         logging.info("Waiting for user to send refund address.")
 
         #Submit state to ledger
