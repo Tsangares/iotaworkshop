@@ -1,4 +1,3 @@
-
 from iotaescrow import Escrow
 import piepd as display
 import pibeep as beep
@@ -46,7 +45,7 @@ class IotaWorkshop:
             str(self.holdingAddress),
             str(self.deposit),
             self.available,
-            state,
+            state
         )
         
     def unoccupied(self):
