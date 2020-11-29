@@ -1,11 +1,15 @@
 import requests,time,logging
 
+#Formats data to the iot2Tangle standard
+#Given a device ID and a list of data
 def formatData(data,device):
     return {
         'iot2tangle': data,
         'device': device,
         'timestamp': int(time.time())
     }
+
+#Given a series of variables for an escrow state, format the json for a POST
 def getEscrowState(collateral,fee,tool,condition,escrow,deposit,available,status):
     datum =     {
         'sensor': 'escrow',
@@ -25,6 +29,8 @@ def getEscrowState(collateral,fee,tool,condition,escrow,deposit,available,status
     }
     return [datum,]
 
+#Given the state of escrow format and submit to keepy to send to the channel of the device
+#keepyNode is the url to the keepy node like: http://localhost:3002
 def submitEscrowState(keepyNode,collateral,fee,tool,condition,escrow,deposit,available,status):
     data = getEscrowState(collateral,fee,tool,condition,escrow,deposit,available,status)
     formatted = formatData(data,'ESCROW_PI')
