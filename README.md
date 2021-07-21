@@ -2,7 +2,14 @@
 
 # Video Demonstation
 Please watch the video demonstration here: 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/LRsAu9jn_a0/0.jpg)](http://www.youtube.com/watch?v=LRsAu9jn_a0 "IOTA Workshop")
+
+[![IOTA Workshop Demo](http://img.youtube.com/vi/LRsAu9jn_a0/1.jpg)](http://www.youtube.com/watch?v=LRsAu9jn_a0 "IOTA Workshop")
+
+
+Here is an introduction video:
+
+[![IOTA Workshop Demo](http://img.youtube.com/vi/PolIkJH3thQ/0.jpg)](http://www.youtube.com/watch?v=PolIkJH3thQ "IOTA Workshop")
+
 
 # Wiki
 Please view the wiki to view the verbose instructions on how the project is setup.
