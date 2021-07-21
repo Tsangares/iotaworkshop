@@ -1,14 +1,16 @@
 ![IOTA Workshop](https://i.ibb.co/q79SgmW/IOTA-WORKSHOP-BLACK.png)
 
 # Video Demonstation
+Here is an introduction video:
+
+[![IOTA Workshop Demo](http://img.youtube.com/vi/PolIkJH3thQ/0.jpg)](http://www.youtube.com/watch?v=PolIkJH3thQ "IOTA Workshop")
+
+
 Please watch the video demonstration here: 
 
 [![IOTA Workshop Demo](http://img.youtube.com/vi/LRsAu9jn_a0/0.jpg)](http://www.youtube.com/watch?v=LRsAu9jn_a0 "IOTA Workshop")
 
 
-Here is an introduction video:
-
-[![IOTA Workshop Demo](http://img.youtube.com/vi/PolIkJH3thQ/0.jpg)](http://www.youtube.com/watch?v=PolIkJH3thQ "IOTA Workshop")
 
 
 # Wiki
