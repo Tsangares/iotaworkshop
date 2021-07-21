@@ -1,7 +1,8 @@
 ![IOTA Workshop](https://i.ibb.co/q79SgmW/IOTA-WORKSHOP-BLACK.png)
 
 # Video Demonstation
-Please watch the video demonstration here: https://youtu.be/LRsAu9jn_a0
+Please watch the video demonstration here: 
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/LRsAu9jn_a0/0.jpg)](http://www.youtube.com/watch?v=LRsAu9jn_a0 "IOTA Workshop")
 
 # Wiki
 Please view the wiki to view the verbose instructions on how the project is setup.
